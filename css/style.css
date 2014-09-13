@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background-color: #ecf0f1; }
+
+#aalist li {
+  float: left;
+  margin: 5px;
+  padding: 10px;
+  border: 2px solid #b1c2c6;
+  list-style-type: none;
+  background-color: #ecf0f1; }
+  #aalist li .imageContainer {
+    text-align: center; }
+    #aalist li .imageContainer img {
+      height: 150px;
+      margin: 0 auto; }
+
+.container {
+  background-color: rgba(46, 204, 113, 0.6);
+  border-left: 2px solid rgba(27, 121, 67, 0.6);
+  border-right: 2px solid rgba(27, 121, 67, 0.6); }
+
+.val {
+  font-weight: bold; }

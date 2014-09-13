@@ -1,0 +1,42 @@
+// colours
+$emerald: #2ecc71;
+$clouds: #ecf0f1;
+
+// dimensions
+$imageHeight: 150px;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background-color: $clouds;
+}
+
+#aalist li {
+  float: left;
+  //width: 340px;
+  margin: 5px;
+  padding: 10px;
+  border: 2px solid darken($clouds, 20%);
+  list-style-type: none;
+  background-color: $clouds;
+  .imageContainer {
+    text-align: center;
+  
+    img {
+      height: $imageHeight;
+      margin: 0 auto;
+    }
+  }
+}
+.container {
+  background-color: rgba($emerald,0.6);
+  border-left: 2px solid darken(rgba($emerald, 0.6),20%);
+  border-right: 2px solid darken(rgba($emerald, 0.6),20%);
+}
+.val {
+  font-weight: bold;
+}
