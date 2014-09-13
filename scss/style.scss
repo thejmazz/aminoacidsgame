@@ -15,6 +15,16 @@ html, body {
   background-color: $clouds;
 }
 
+body {
+  &::-webkit-scrollbar {
+      width: 12px;
+      background: $clouds;; 
+  }
+  &::-webkit-scrollbar-thumb {
+      background: rgba($emerald,0.4); 
+  }
+}
+
 #aalist li {
   float: left;
   //width: 340px;
