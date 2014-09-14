@@ -50,7 +50,8 @@ body {
 
 #myUl {
   width: 200px;
-  overflow: hidden; }
+  overflow: hidden;
+  margin: 0; }
   #myUl #forms {
     width: 9999px;
     -webkit-transition: all 500ms ease;
@@ -98,7 +99,7 @@ body {
     width: 14px; }
 
 .fa-check {
-  border: 1px solid #2ecc71;
+  border: 1px solid black;
   color: black; }
 
 #structuresWrap {

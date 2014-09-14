@@ -87,6 +87,7 @@ body {
 #myUl {
   width: 200px;
   overflow: hidden;
+  margin: 0;
   
   #forms {
     width: 9999px;
@@ -141,7 +142,7 @@ body {
   }
 }
 .fa-check {
-  border: 1px solid $emerald;
+  border: 1px solid black;
   
   color: black;
   //color: $emerald;
@@ -183,6 +184,10 @@ body {
         padding: 10px;
         border:2px solid darken($clouds, 20%);
         @include transition(250ms);
+        
+        &.givenStruct {
+          //height: 200px;
+        }
         
         &.chosen {
           background-color: darken($clouds, 10%);

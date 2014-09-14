@@ -1,3 +1,7 @@
+$(document).ready(function() {
+	main();
+});
+
 var aminos = [{
 		"structure" : "glycine.svg",
 		"name" : "glycine",
@@ -105,54 +109,59 @@ function SimpleController($scope) {
 	$scope.predicate = "name";
 }
 
-$(document).ready(function() {
-	main();
-	
-	$(function() {
-	
-	   $("#structuresWrap").mousewheel(function(event, delta) {
-	
-	      this.scrollLeft -= (delta * 30);
-	    
-	      event.preventDefault();
-	
-	   });
-	
-	});
-});
-
 function main() {
+	$(function() {
+	   $("#structuresWrap").mousewheel(function(event, delta) {
+	      this.scrollLeft -= (delta * 30);
+	      event.preventDefault();
+	   });
+	});
+	
 	var numbers = [];
 	var counter = 1;
 	for(var i = 0; i < aminos.length; i++){
 		numbers.push(i);
 	}
 	
+	var chosenStructure;
+	var rand;
+	var rands = [0];
 	genHTML();
+	
 	function genHTML(){
 		nums = shuffle(numbers);
 		var s = '';
+		var t = '';
 		for(var i = 0; i < nums.length; i++){
-			name = aminos[nums[i]].name;
-			shortName = aminos[nums[i]].short;
-			code = aminos[nums[i]].code;
+			var name = aminos[nums[i]].name;
+			var shortName = aminos[nums[i]].short;
+			var code = aminos[nums[i]].code;
+			var struct = aminos[nums[i]].structure;
 			//console.log(name, shortName, code);
-			var rand = Math.random();
+			rand = Math.random();
+			rands.push(rand);
 			s += '<li>';
-			if (rand <= (1/3)){
-				s += '<input class="name" type="text" value="' + name + '"></input><i class="name fa"></i> <br>';
+			if (rand <= (1/4)){
+				s += '<img class="givenStruct" id="' + struct.slice(0,-4) + 'Svg' + '"src="svg/' + struct + '"></img>';
+				s += '<input class="name" type="text" value="" placeholder="name"></input><i class="name fa"></i> <br>';
 				s += '<input class="short" type="text" value="" placeholder="shortName"></input><i class="short fa"></i><i class="short fa"></i> <br>';
 				s += '<input class="code" type="text" value="" placeholder="code"></input><i class="code fa"></i> <br>';
-			} else if (rand <= (2/3)){
+			} else if (rand <= (2/4)){
 				s += '<input class="name" type="text" value="" placeholder="name"></input><i class="name fa"></i> <br>';
 				s += '<input class="short" type="text" value="' + shortName + '"></input><i class="short fa"></i> <br>';
 				s += '<input class="code" type="text" value="" placeholder="code"></input><i class="code fa"></i> <br>';
+			} else if (rand <= (3/4)){
+				s += '<input class="name" type="text" value="" placeholder="name"></input><i class="name fa"></i> <br>';
+				s += '<input class="short" type="text" value="" placeholder="shortName"></input><i class="short fa"></i> <br>';
+				s += '<input class="code" type="text" value="' + code + '"></input><i class="code fa"></i> <br>';
 			} else {
 				s += '<input class="name" type="text" value="" placeholder="name"></input><i class="name fa"></i> <br>';
 				s += '<input class="short" type="text" value="" placeholder="shortName"></input><i class="short fa"></i> <br>';
 				s += '<input class="code" type="text" value="' + code + '"></input><i class="code fa"></i> <br>';
 			}
 			
+			s += '<a href=# id="next">next</a><a href=# id="restart">restart</a>';
+			s += '<div id="counter"></div>';
 			s += '</li>';
 		}
 		
@@ -161,21 +170,22 @@ function main() {
 			numbers2.push(i);
 		}
 		var nums2 = shuffle(numbers2);
-		var t = '';
-		for(var i = 0; i < nums2.length; i++){
-			if (i == nums2.length - 1){
-				t += '<li class="last"><img id="' + aminos[nums2[i]].structure.slice(0,-4) + 'Svg' + '"src="svg/' + aminos[nums2[i]].structure + '"></img></li>';
-			} else {
-				t += '<li><img id="' + aminos[nums2[i]].structure.slice(0,-4) + 'Svg' + '"src="svg/' + aminos[nums2[i]].structure + '"></img></li>';
+		
+		if(rands[counter] > (1/4)){
+			for(var i = 0; i < nums2.length; i++){
+				if (i == nums2.length - 1){
+					t += '<li class="last"><img id="' + aminos[nums2[i]].structure.slice(0,-4) + 'Svg' + '"src="svg/' + aminos[nums2[i]].structure + '"></img></li>';
+				} else {
+					t += '<li><img id="' + aminos[nums2[i]].structure.slice(0,-4) + 'Svg' + '"src="svg/' + aminos[nums2[i]].structure + '"></img></li>';
+				}
 			}
 		}
 		t += '<div class="clear"></div>';
 		
 		$('#forms').html(s);
 		$('#structures').html(t);
-		$('#test').html('' + counter + '/20');
+		$('#counter').html('' + counter + '/20');
 	}
-	
 	
 	$('#next').click(function(){
 		clicked();
@@ -186,21 +196,28 @@ function main() {
 	    return false;
 	  }
 	});
-	var chosenStructure = 'null';
-	$('#structures img').click(function(){
-		console.log($(this)[0]);
-		$('#structures img').each(function(){
-			$(this).removeClass('chosen');
+	console.log(counter);
+	console.log(rands[counter]);
+	if (rands[counter] > (1/4)){
+		chosenStructure = 'null';
+		$('#structures img').click(function(){
+			console.log($(this)[0]);
+			$('#structures img').each(function(){
+				$(this).removeClass('chosen');
+			});
+			$(this).addClass('chosen');
+			var u = $($(this)[0]).attr('src').slice(4,-4);
+			chosenStructure = u;
+			$('#testName').html(u);
 		});
-		$(this).addClass('chosen');
-		var u = $($(this)[0]).attr('src').slice(4,-4);
-		chosenStructure = u;
-		$('#testName').html(u);
-	});
+	}
 	
 	function clicked(){
 		var correct = true;
 		var current = $('#myUl').find('li')[counter-1];
+		if (rands[counter] <= (1/4)){
+			chosenStructure = $($(current).find('.givenStruct')[0]).attr('src').slice(4,-4);
+		}
 		console.log(aminos[nums[counter-1]].name, aminos[nums[counter-1]].short, aminos[nums[counter-1]].code);
 		if(chosenStructure == aminos[nums[counter-1]].name){
 			console.log(chosenStructure + '==' + aminos[nums[counter-1]].name);
@@ -326,6 +343,19 @@ function main() {
 					});
 				}
 				$('#test').html('' + counter + '/20');
+				if (rands[counter] > (1/4)){
+					chosenStructure = 'null';
+					$('#structures img').click(function(){
+						console.log($(this)[0]);
+						$('#structures img').each(function(){
+							$(this).removeClass('chosen');
+						});
+						$(this).addClass('chosen');
+						var u = $($(this)[0]).attr('src').slice(4,-4);
+						chosenStructure = u;
+						$('#testName').html(u);
+					});
+				}
 			}, 500);	
 		}
 	}
