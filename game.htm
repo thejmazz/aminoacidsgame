@@ -4,16 +4,22 @@
 		<title>The Amino Acids</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.min.js"></script>
 		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
 		<script src="js/jquery.mousewheel.min.js"></script>
 		<script src="js/main.js"></script>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/jquery-ui.min.css">
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
 		<div class="container">
-			<a href="index.htm">home</a>
+			<a href="index.htm">home</a><br>
+			<span>Set image height:</span> <span id="size"></span>
+			<div id="slider"></div>
 			<ul id="structuresWrap">
 				<div id="structures">
 					
@@ -26,9 +32,8 @@
 						<input class="short" type="text" value="short"></input> <br>
 						<input class="code" type="text" value="code"></input> <br>
 					</li>
-					<a href=# id="next">next</a>
-					<a href=# id="restart">restart</a>
-					<div id="counter"></div>
+					<button type="button" class="btn btn-success"><a href=# id="next">Next<a href=# id="restart">Restart</a></a></button>
+					<br><span id="counter" class="label label-default"></span>
 				</div>
 			</ul>
 			

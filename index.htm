@@ -4,21 +4,28 @@
 		<title>The Amino Acids</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.min.js"></script>
 		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
 		<script src="js/jquery.mousewheel.min.js"></script>
 		<script src="js/main.js"></script>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/jquery-ui.min.css">
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
 		<div class="container" ng-controller="SimpleController">
+			<h3>Amino Acids Game by <a href="https://twitter.com/thejmazz" target="_blank">@thejmazz</a> | View <a href="https://github.com/thejmazz/aminoacidsgame" target="_blank">source on github</a> | <a href="game.htm">game</a></h3>
+			
 			Sort by: 
 			<a href=# ng-click="predicate=''">unsorted</a>
 			<a href=# ng-click="predicate='name'">name</a>
 			<a href=# ng-click="predicate='short'">short</a>
 			<a href=# ng-click="predicate='code'">code</a> <br>
-			<a href="game.htm">game</a>
+			<span>Set image height:</span> <span id="size"></span>
+			<div id="slider"></div>
 			<ul id="aalist">
 				<li ng-repeat="amino in aminos | orderBy:predicate">
 					<div class="imageContainer">

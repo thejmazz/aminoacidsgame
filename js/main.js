@@ -110,6 +110,22 @@ function SimpleController($scope) {
 }
 
 function main() {
+	 $(function() {
+	    $( "#slider" ).slider({
+	      range: "min",
+	      value: 200,
+	      min: 150,
+	      max: 700,
+	      slide: function( event, ui ) {
+	        $( "#size" ).html(ui.value + 'px' );
+	        $('img').each(function(){
+		    	$(this).height($( "#slider" ).slider( "value" ));
+		    });
+	      }
+	    });
+	    $( "#size" ).html($( "#slider" ).slider( "value" )+ 'px' );
+	    
+	  });
 	$(function() {
 	   $("#structuresWrap").mousewheel(function(event, delta) {
 	      this.scrollLeft -= (delta * 30);
@@ -160,8 +176,9 @@ function main() {
 				s += '<input class="code" type="text" value="' + code + '"></input><i class="code fa"></i> <br>';
 			}
 			
-			s += '<a href=# id="next">next</a><a href=# id="restart">restart</a>';
-			s += '<div id="counter"></div>';
+			s += '<button type="button" class="btn btn-success"><a href=# id="next">Next</a><a href=# id="restart">Restart</a></button>';
+			s += '<h3 style="margin:0;"><span id="counter" class="label label-default"></span></h3>';
+			s += '<div class="clear"></div>';
 			s += '</li>';
 		}
 		
