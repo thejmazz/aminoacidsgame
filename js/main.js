@@ -107,6 +107,18 @@ function SimpleController($scope) {
 
 $(document).ready(function() {
 	main();
+	
+	$(function() {
+	
+	   $("#structuresWrap").mousewheel(function(event, delta) {
+	
+	      this.scrollLeft -= (delta * 30);
+	    
+	      event.preventDefault();
+	
+	   });
+	
+	});
 });
 
 function main() {
