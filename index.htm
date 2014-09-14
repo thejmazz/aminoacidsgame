@@ -10,8 +10,13 @@
 	</head>
 	<body>
 		<div class="container" ng-controller="SimpleController">
+			Sort by: 
+			<a href=# ng-click="predicate=''">unsorted</a>
+			<a href=# ng-click="predicate='name'">name</a>
+			<a href=# ng-click="predicate='short'">short</a>
+			<a href=# ng-click="predicate='code'">code</a>
 			<ul id="aalist">
-				<li ng-repeat="amino in aminos">
+				<li ng-repeat="amino in aminos | orderBy:predicate">
 					<div class="imageContainer">
 						<img src="{{ 'svg/' + amino.name + '.svg'}}"></img>
 					</div> <br>

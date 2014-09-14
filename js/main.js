@@ -100,4 +100,5 @@ function SimpleController($scope) {
 		"short" : "pro",
 		"code" : "P"
 	}];
+	$scope.predicate = "name";
 }
