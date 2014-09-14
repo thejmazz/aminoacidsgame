@@ -176,7 +176,7 @@ function main() {
 				s += '<input class="code" type="text" value="' + code + '"></input><i class="code fa"></i> <br>';
 			}
 			
-			s += '<button type="button" class="btn btn-success"><a href=# id="next">Next</a><a href=# id="restart">Restart</a></button>';
+			s += '<button id="nextButton" type="button" class="btn btn-success"><a href=# id="next">Next</a><a href=# id="restart">Restart</a></button>';
 			s += '<h3 style="margin:0;"><span id="counter" class="label label-default"></span></h3>';
 			s += '<div class="clear"></div>';
 			s += '</li>';
@@ -204,7 +204,7 @@ function main() {
 		$('#counter').html('' + counter + '/20');
 	}
 	
-	$('#next').click(function(){
+	$('#nextButton').click(function(){
 		clicked();
 	});
 	$('input').keypress(function (e) {
