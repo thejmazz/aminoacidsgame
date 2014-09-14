@@ -19,7 +19,7 @@ body {
     width: 12px;
     background: #ecf0f1; }
   body::-webkit-scrollbar-thumb {
-    background: rgba(52, 152, 219, 0.4); }
+    background: rgba(46, 204, 113, 0.4); }
 
 #aalist li {
   float: left;
