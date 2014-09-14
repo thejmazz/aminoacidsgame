@@ -5,6 +5,9 @@
 .clear {
   clear: both; }
 
+a:hover {
+  text-decoration: none; }
+
 html, body {
   height: 100%;
   width: 100%;
@@ -59,7 +62,7 @@ body {
       float: left;
       list-style-type: none; }
       #myUl #forms li input {
-        width: 160px;
+        width: 150px;
         margin-top: 10px;
         margin-bottom: 10px;
         margin-right: 10px;
@@ -79,11 +82,20 @@ body {
   -o-transition: all 250ms ease;
   transition: all 250ms ease;
   padding: 5px;
-  border-radius: 50%; }
+  border-radius: 50%;
+  display: inline-block; }
 
+/*.fa-fw {
+  width: 14px;
+  text-align: center;
+}*/
 .fa-close {
   border: 1px solid #e74c3c;
+  text-align: center;
   color: #e74c3c; }
+  .fa-close:before {
+    display: block;
+    width: 14px; }
 
 .fa-check {
   border: 1px solid #2ecc71;
