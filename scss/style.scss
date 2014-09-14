@@ -1,9 +1,20 @@
 // colours
 $emerald: #2ecc71;
 $clouds: #ecf0f1;
+$alizarin: #e74c3c;
 
 // dimensions
 $imageHeight: 150px;
+
+//mixins
+@mixin transition($duration, $speed:ease){
+  -webkit-transition: all $duration $speed;
+  -moz-transition: all $duration $speed;
+  -o-transition: all $duration $speed;
+  transition: all $duration $speed;
+}
+
+// main styles
 * {
   margin: 0;
   padding: 0;
@@ -35,6 +46,12 @@ body {
   border: 2px solid darken($clouds, 20%);
   list-style-type: none;
   background-color: $clouds;
+  @include transition(250ms);
+  
+  &:hover {
+    background-color: darken($clouds, 10%);
+  }
+  
   .imageContainer {
     text-align: center;
   
@@ -59,15 +76,24 @@ body {
   
   #forms {
     width: 9999px;
+    @include transition(500ms);
     
     li {
       width: 200px;
       float: left;
       list-style-type: none;
+      
+      input {
+        width: 180px;
+      }
     }
   }
 }
 
 #restart {
   display: none;
+}
+
+.fa-close {
+  color: $alizarin;
 }

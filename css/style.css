@@ -21,7 +21,13 @@ body {
   padding: 10px;
   border: 2px solid #b1c2c6;
   list-style-type: none;
-  background-color: #ecf0f1; }
+  background-color: #ecf0f1;
+  -webkit-transition: all 250ms ease;
+  -moz-transition: all 250ms ease;
+  -o-transition: all 250ms ease;
+  transition: all 250ms ease; }
+  #aalist li:hover {
+    background-color: #cfd9db; }
   #aalist li .imageContainer {
     text-align: center; }
     #aalist li .imageContainer img {
@@ -40,11 +46,20 @@ body {
   width: 200px;
   overflow: hidden; }
   #myUl #forms {
-    width: 9999px; }
+    width: 9999px;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease; }
     #myUl #forms li {
       width: 200px;
       float: left;
       list-style-type: none; }
+      #myUl #forms li input {
+        width: 180px; }
 
 #restart {
   display: none; }
+
+.fa-close {
+  color: #e74c3c; }

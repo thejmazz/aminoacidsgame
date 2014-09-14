@@ -7,6 +7,7 @@
 		<script src="js/main.js"></script>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
@@ -15,22 +16,18 @@
 			<a href=# ng-click="predicate=''">unsorted</a>
 			<a href=# ng-click="predicate='name'">name</a>
 			<a href=# ng-click="predicate='short'">short</a>
-			<a href=# ng-click="predicate='code'">code</a>
+			<a href=# ng-click="predicate='code'">code</a> <br>
+			<a href="game.htm">game</a>
 			<ul id="aalist">
 				<li ng-repeat="amino in aminos | orderBy:predicate">
 					<div class="imageContainer">
 						<img src="{{ 'svg/' + amino.name + '.svg'}}"></img>
 					</div> <br>
-					<span>Name: </span> <span class="val">{{amino.name}}</span> <br>
- 					<span>Short: </span> <span class="val">{{amino.short}}</span> <br> 
- 					<span>Code: </span> <span class="val">{{amino.code}}</span> 
+					<span>Name: </span> <span class="val" style="text-transform: capitalize;">{{amino.name}}</span> <br>
+ 					<span>Short: </span> <span class="val" style="text-transform: capitalize;">{{amino.short}}</span> <br> 
+ 					<span>Code: </span> <span class="val">{{amino.code | uppercase}}</span> 
 				</li>
 			</ul>
-		</div>
-		<div class="container">
-			<form>
-				<input type="text">name</input>
-			</form>
 		</div>
 	</body>
 </html>

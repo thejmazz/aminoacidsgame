@@ -2,102 +2,102 @@ var aminos = [{
 		"structure" : "gylcine.svg",
 		"name" : "glycine",
 		"short" : "gly",
-		"code" : "G"
+		"code" : "g"
 	}, {
 		"structure" : "alanine.svg",
 		"name" : "alanine",
 		"short" : "ala",
-		"code" : "A"
+		"code" : "a"
 	}, {
 		"structure" : "valine.svg",
 		"name" : "valine",
 		"short" : "val",
-		"code" : "V"
+		"code" : "v"
 	}, {
 		"structure" : "leucine.svg",
 		"name" : "leucine",
 		"short" : "leu",
-		"code" : "L"
+		"code" : "l"
 	}, {
 		"structure" : "isoleucine.svg",
 		"name" : "isoleucine",
 		"short" : "ile",
-		"code" : "I"
+		"code" : "i"
 	}, {
 		"structure" : "serine.svg",
 		"name" : "serine",
 		"short" : "ser",
-		"code" : "S"
+		"code" : "s"
 	}, {
 		"structure" : "threonine.svg",
 		"name" : "threonine",
 		"short" : "thr",
-		"code" : "T"
+		"code" : "t"
 	}, {
 		"structure" : "phenylalanine.svg",
 		"name" : "phenylalanine",
 		"short" : "phe",
-		"code" : "F"
+		"code" : "f"
 	}, {
 		"structure" : "tyrosine.svg",
 		"name" : "tyrosine",
 		"short" : "tyr",
-		"code" : "Y"
+		"code" : "y"
 	}, {
 		"structure" : "tryptophan.svg",
 		"name" : "tryptophan",
 		"short" : "trp",
-		"code" : "W"
+		"code" : "w"
 	}, {
 		"structure" : "cysteine.svg",
 		"name" : "cysteine",
 		"short" : "cys",
-		"code" : "C"
+		"code" : "c"
 	}, {
 		"structure" : "methionine.svg",
 		"name" : "methionine",
 		"short" : "met",
-		"code" : "M"
+		"code" : "m"
 	}, {
 		"structure" : "aspartate.svg",
 		"name" : "aspartate",
 		"short" : "asp",
-		"code" : "D"
+		"code" : "d"
 	}, {
 		"structure" : "glutamate.svg",
 		"name" : "glutamate",
 		"short" : "glu",
-		"code" : "E"
+		"code" : "e"
 	}, {
 		"structure" : "asparagine.svg",
 		"name" : "asparagine",
 		"short" : "asn",
-		"code" : "N"
+		"code" : "n"
 	}, {
 		"structure" : "glutamine.svg",
 		"name" : "glutamine",
 		"short" : "gln",
-		"code" : "Q"
+		"code" : "q"
 	}, {
 		"structure" : "lysine.svg",
 		"name" : "lysine",
 		"short" : "lys",
-		"code" : "K"
+		"code" : "k"
 	}, {
 		"structure" : "arginine.svg",
 		"name" : "arginine",
 		"short" : "arg",
-		"code" : "R"
+		"code" : "r"
 	}, {
 		"structure" : "histidine.svg",
 		"name" : "histidine",
 		"short" : "his",
-		"code" : "H"
+		"code" : "h"
 	}, {
 		"structure" : "proline.svg",
 		"name" : "proline",
 		"short" : "pro",
-		"code" : "P"
+		"code" : "p"
 	}];
 
 function SimpleController($scope) {
@@ -125,70 +125,114 @@ function main() {
 			shortName = aminos[nums[i]].short;
 			code = aminos[nums[i]].code;
 			//console.log(name, shortName, code);
+			var rand = Math.random();
 			s += '<li>';
-			s += '<input class="name" type="text" value="' + name + '"></input> <br>';
-			s += '<input class="short notFilled" type="text" value="' + 'shortName' + '"></input> <br>';
-			s += '<input class="code notFilled" type="text" value="' + 'code' + '"></input> <br>';
+			if (rand <= (1/3)){
+				s += '<input class="name" type="text" value="' + name + '"></input><i class="name fa"></i> <br>';
+				s += '<input class="short" type="text" value="" placeholder="shortName"></input><i class="short fa"></i><i class="short fa"></i> <br>';
+				s += '<input class="code" type="text" value="" placeholder="code"></input><i class="code fa"></i> <br>';
+			} else if (rand <= (2/3)){
+				s += '<input class="name" type="text" value="" placeholder="name"></input><i class="name fa"></i> <br>';
+				s += '<input class="short" type="text" value="' + shortName + '"></input><i class="short fa"></i> <br>';
+				s += '<input class="code" type="text" value="" placeholder="code"></input><i class="code fa"></i> <br>';
+			} else {
+				s += '<input class="name" type="text" value="" placeholder="name"></input><i class="name fa"></i> <br>';
+				s += '<input class="short" type="text" value="" placeholder="shortName"></input><i class="short fa"></i> <br>';
+				s += '<input class="code" type="text" value="' + code + '"></input><i class="code fa"></i> <br>';
+			}
+			
 			s += '</li>';
 		}
 		$('#forms').html(s);
+		$('#test').html('' + counter + '/20');
 	}
 	
 	
 	$('#next').click(function(){
+		clicked();
+	});
+	$('input').keypress(function (e) {
+	  if (e.which == 13) {
+	    clicked();
+	    return false;
+	  }
+	});
+	
+	function clicked(){
 		var correct = true;
 		var current = $('#myUl').find('li')[counter-1];
 		console.log(aminos[nums[counter-1]].name, aminos[nums[counter-1]].short, aminos[nums[counter-1]].code);
-		$(current).find('.notFilled').each(function(){
+		$(current).find('input').each(function(){
 			if($(this).hasClass('short')){
-				if($(this).val() == aminos[nums[counter-1]].short){
+				if($(this).val().toLowerCase() == aminos[nums[counter-1]].short){
 					console.log($(this).val() + '==' + aminos[nums[counter-1]].short);
+					$($(current).find('i.short')[0]).removeClass('fa-close');
+					$($(current).find('i.short')[0]).addClass('fa-check');
 				} else {
 					correct = false;
-					$(this).css({'color':'red'});
+					$($(current).find('i.short')[0]).removeClass('fa-check');
+					$($(current).find('i.short')[0]).addClass('fa-close');
 					console.log($(this).val() + '!=' + aminos[nums[counter-1]].short);
 				}
 			}
 			if($(this).hasClass('code')){
-				if($(this).val() == aminos[nums[counter-1]].code){
+				if($(this).val().toLowerCase() == aminos[nums[counter-1]].code){
 					console.log($(this).val() + '==' + aminos[nums[counter-1]].code);
+					$($(current).find('i.code')[0]).removeClass('fa-close');
+					$($(current).find('i.code')[0]).addClass('fa-check');
 				} else {
 					correct = false;
-					$(this).css({'color':'red'});
+					$($(current).find('i.code')[0]).removeClass('fa-check');
+					$($(current).find('i.code')[0]).addClass('fa-close');
 					console.log($(this).val() + '!=' + aminos[nums[counter-1]].code);
+				}
+			}
+			if($(this).hasClass('name')){
+				if($(this).val().toLowerCase() == aminos[nums[counter-1]].name){
+					console.log($(this).val() + '==' + aminos[nums[counter-1]].name);
+					$($(current).find('i.name')[0]).removeClass('fa-close');
+					$($(current).find('i.name')[0]).addClass('fa-check');
+				} else {
+					correct = false;
+					$($(current).find('i.name')[0]).removeClass('fa-check');
+					$($(current).find('i.name')[0]).addClass('fa-close');
+					console.log($(this).val() + '!=' + aminos[nums[counter-1]].name);
 				}
 			}
 		});
 		
 		if(correct){
-			$('#forms').css({
-				'margin-left': '-' + counter*200 + 'px'
-			});
-			if(counter < aminos.length - 1){
-				counter += 1;
-			} else {
-				counter = 1;
-				$('#next').css({
-					'display' : 'none'
+			setTimeout(function(){
+				$('#forms').css({
+					'margin-left': '-' + counter*200 + 'px'
 				});
-				$('#restart').css({
-					'display' : 'block'
-				});
-				$('#restart').click(function(){
-					genHTML();
-					$('#forms').css({
-						'margin-left': '0px'
-					});
+				if(counter < aminos.length - 1){
+					counter += 1;
+				} else {
+					counter = 1;
 					$('#next').css({
-						'display' : 'block'
-					});
-					$('#restart').css({
 						'display' : 'none'
 					});
-				});
-			}	
+					$('#restart').css({
+						'display' : 'block'
+					});
+					$('#restart').click(function(){
+						genHTML();
+						$('#forms').css({
+							'margin-left': '0px'
+						});
+						$('#next').css({
+							'display' : 'block'
+						});
+						$('#restart').css({
+							'display' : 'none'
+						});
+					});
+				}
+				$('#test').html('' + counter + '/20');
+			}, 500);	
 		}
-	});
+	}
 }
 
 function shuffle(array) {
