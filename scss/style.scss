@@ -16,6 +16,8 @@ html, body {
 }
 
 body {
+  min-height: 100%;
+  
   &::-webkit-scrollbar {
       width: 12px;
       background: $clouds;; 
@@ -49,4 +51,23 @@ body {
 }
 .val {
   font-weight: bold;
+}
+
+#myUl {
+  width: 200px;
+  overflow: hidden;
+  
+  #forms {
+    width: 9999px;
+    
+    li {
+      width: 200px;
+      float: left;
+      list-style-type: none;
+    }
+  }
+}
+
+#restart {
+  display: none;
 }

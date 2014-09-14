@@ -7,11 +7,13 @@ html, body {
   width: 100%;
   background-color: #ecf0f1; }
 
-body::-webkit-scrollbar {
-  width: 12px;
-  background: #ecf0f1; }
-body::-webkit-scrollbar-thumb {
-  background: rgba(46, 204, 113, 0.4); }
+body {
+  min-height: 100%; }
+  body::-webkit-scrollbar {
+    width: 12px;
+    background: #ecf0f1; }
+  body::-webkit-scrollbar-thumb {
+    background: rgba(46, 204, 113, 0.4); }
 
 #aalist li {
   float: left;
@@ -33,3 +35,16 @@ body::-webkit-scrollbar-thumb {
 
 .val {
   font-weight: bold; }
+
+#myUl {
+  width: 200px;
+  overflow: hidden; }
+  #myUl #forms {
+    width: 9999px; }
+    #myUl #forms li {
+      width: 200px;
+      float: left;
+      list-style-type: none; }
+
+#restart {
+  display: none; }
