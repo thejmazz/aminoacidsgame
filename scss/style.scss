@@ -1,7 +1,13 @@
 // colours
 $emerald: #2ecc71;
+$peterRiver: #3498db;
 $clouds: #ecf0f1;
 $alizarin: #e74c3c;
+$carrot: #e67e22;
+$amethyst: #9b59b6;
+
+// functional colours
+$mainBg: $emerald; 
 
 // dimensions
 $imageHeight: 150px;
@@ -38,7 +44,7 @@ body {
       background: $clouds;; 
   }
   &::-webkit-scrollbar-thumb {
-      background: rgba($emerald,0.4); 
+      background: rgba($peterRiver,0.4); 
   }
 }
 
@@ -66,9 +72,9 @@ body {
   }
 }
 .container {
-  background-color: rgba($emerald,0.6);
-  border-left: 2px solid darken(rgba($emerald, 0.6),20%);
-  border-right: 2px solid darken(rgba($emerald, 0.6),20%);
+  background-color: rgba($mainBg,0.6);
+  border-left: 2px solid darken(rgba($mainBg, 0.6),20%);
+  border-right: 2px solid darken(rgba($mainBg, 0.6),20%);
 }
 .val {
   font-weight: bold;
@@ -88,7 +94,17 @@ body {
       list-style-type: none;
       
       input {
-        width: 180px;
+        width: 160px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        
+        /*&:first-child {
+          margin-top: 0;
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }*/
       }
     }
   }
@@ -98,8 +114,20 @@ body {
   display: none;
 }
 
+.fa {
+  @include transition(250ms);
+  padding: 5px;
+  border-radius: 50%;
+}
 .fa-close {
+  border: 1px solid $alizarin;
   color: $alizarin;
+}
+.fa-check {
+  border: 1px solid $emerald;
+  
+  color: black;
+  //color: $emerald;
 }
 
 #structuresWrap {

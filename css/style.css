@@ -16,7 +16,7 @@ body {
     width: 12px;
     background: #ecf0f1; }
   body::-webkit-scrollbar-thumb {
-    background: rgba(46, 204, 113, 0.4); }
+    background: rgba(52, 152, 219, 0.4); }
 
 #aalist li {
   float: left;
@@ -59,13 +59,35 @@ body {
       float: left;
       list-style-type: none; }
       #myUl #forms li input {
-        width: 180px; }
+        width: 160px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        /*&:first-child {
+          margin-top: 0;
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }*/ }
 
 #restart {
   display: none; }
 
+.fa {
+  -webkit-transition: all 250ms ease;
+  -moz-transition: all 250ms ease;
+  -o-transition: all 250ms ease;
+  transition: all 250ms ease;
+  padding: 5px;
+  border-radius: 50%; }
+
 .fa-close {
+  border: 1px solid #e74c3c;
   color: #e74c3c; }
+
+.fa-check {
+  border: 1px solid #2ecc71;
+  color: black; }
 
 #structuresWrap {
   overflow-x: auto;

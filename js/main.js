@@ -223,6 +223,14 @@ function main() {
 					correct = false;
 					$($(current).find('i.short')[0]).removeClass('fa-check');
 					$($(current).find('i.short')[0]).addClass('fa-close');
+					$($(current).find('i.short')[0]).css({
+						'transform' : 'scale(1.5,1.5)'
+					});
+					setTimeout(function(){
+						$($(current).find('i.short')[0]).css({
+							'transform' : 'scale(1,1)'
+						});
+					}, 500);
 					console.log($(this).val() + '!=' + aminos[nums[counter-1]].short);
 				}
 			}
@@ -235,6 +243,14 @@ function main() {
 					correct = false;
 					$($(current).find('i.code')[0]).removeClass('fa-check');
 					$($(current).find('i.code')[0]).addClass('fa-close');
+					$($(current).find('i.code')[0]).css({
+						'transform' : 'scale(1.5,1.5)'
+					});
+					setTimeout(function(){
+						$($(current).find('i.code')[0]).css({
+							'transform' : 'scale(1,1)'
+						});
+					}, 500);
 					console.log($(this).val() + '!=' + aminos[nums[counter-1]].code);
 				}
 			}
@@ -247,6 +263,14 @@ function main() {
 					correct = false;
 					$($(current).find('i.name')[0]).removeClass('fa-check');
 					$($(current).find('i.name')[0]).addClass('fa-close');
+					$($(current).find('i.name')[0]).css({
+						'transform' : 'scale(1.5,1.5)'
+					});
+					setTimeout(function(){
+						$($(current).find('i.name')[0]).css({
+							'transform' : 'scale(1,1)'
+						});
+					}, 500);
 					console.log($(this).val() + '!=' + aminos[nums[counter-1]].name);
 				}
 			}
