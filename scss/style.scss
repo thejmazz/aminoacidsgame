@@ -20,6 +20,10 @@ $imageHeight: 150px;
   padding: 0;
 }
 
+.clear {
+  clear: both;
+}
+
 html, body {
   height: 100%;
   width: 100%;
@@ -96,4 +100,62 @@ body {
 
 .fa-close {
   color: $alizarin;
+}
+
+#structuresWrap {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding-bottom: 10px;
+  
+  &::-webkit-scrollbar {
+      width: 12px;
+      background: rgba($emerald,0.4);; 
+  }
+  &::-webkit-scrollbar-thumb {
+      background: $clouds; 
+  }
+
+  #structures {
+    //width: auto;
+    
+    li {
+      display:inline-block;
+      //vertical-align: top;
+      list-style-type: none;
+      //float: left;
+      margin-left: 5px;
+      margin-right: 5px;
+      
+      &:first-child {
+        margin-left: 0;
+      }
+      &.last {
+        margin-right: 0;
+      }
+      
+      img {
+        padding: 10px;
+        border:2px solid darken($clouds, 20%);
+        @include transition(250ms);
+        
+        &.chosen {
+          background-color: darken($clouds, 10%);
+        }
+        
+        &.wrong {
+          border: 2px solid $alizarin;
+        }
+        
+        &.correct {
+          border: 2px solid $emerald;
+        }
+        
+        &:hover {
+          cursor: pointer;
+          background-color: darken($clouds, 10%);
+        }
+      }
+    }
+  } 
 }

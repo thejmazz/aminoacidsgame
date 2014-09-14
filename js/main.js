@@ -1,5 +1,5 @@
 var aminos = [{
-		"structure" : "gylcine.svg",
+		"structure" : "glycine.svg",
 		"name" : "glycine",
 		"short" : "gly",
 		"code" : "g"
@@ -110,15 +110,15 @@ $(document).ready(function() {
 });
 
 function main() {
-	var nums = [];
+	var numbers = [];
 	var counter = 1;
 	for(var i = 0; i < aminos.length; i++){
-		nums.push(i);
+		numbers.push(i);
 	}
 	
 	genHTML();
 	function genHTML(){
-		nums = shuffle(nums);
+		nums = shuffle(numbers);
 		var s = '';
 		for(var i = 0; i < nums.length; i++){
 			name = aminos[nums[i]].name;
@@ -143,7 +143,24 @@ function main() {
 			
 			s += '</li>';
 		}
+		
+		var numbers2 = [];
+		for(var i = 0; i < aminos.length; i++){
+			numbers2.push(i);
+		}
+		var nums2 = shuffle(numbers2);
+		var t = '';
+		for(var i = 0; i < nums2.length; i++){
+			if (i == nums2.length - 1){
+				t += '<li class="last"><img id="' + aminos[nums2[i]].structure.slice(0,-4) + 'Svg' + '"src="svg/' + aminos[nums2[i]].structure + '"></img></li>';
+			} else {
+				t += '<li><img id="' + aminos[nums2[i]].structure.slice(0,-4) + 'Svg' + '"src="svg/' + aminos[nums2[i]].structure + '"></img></li>';
+			}
+		}
+		t += '<div class="clear"></div>';
+		
 		$('#forms').html(s);
+		$('#structures').html(t);
 		$('#test').html('' + counter + '/20');
 	}
 	
@@ -157,11 +174,45 @@ function main() {
 	    return false;
 	  }
 	});
+	var chosenStructure = 'null';
+	$('#structures img').click(function(){
+		console.log($(this)[0]);
+		$('#structures img').each(function(){
+			$(this).removeClass('chosen');
+		});
+		$(this).addClass('chosen');
+		var u = $($(this)[0]).attr('src').slice(4,-4);
+		chosenStructure = u;
+		$('#testName').html(u);
+	});
 	
 	function clicked(){
 		var correct = true;
 		var current = $('#myUl').find('li')[counter-1];
 		console.log(aminos[nums[counter-1]].name, aminos[nums[counter-1]].short, aminos[nums[counter-1]].code);
+		if(chosenStructure == aminos[nums[counter-1]].name){
+			console.log(chosenStructure + '==' + aminos[nums[counter-1]].name);
+			$('#structures img').each(function(){
+				$(this).removeClass('correct');
+			});
+			$('#structures img').each(function(){
+				$(this).removeClass('wrong');
+			});
+			$($('#' + chosenStructure + 'Svg')[0]).addClass('correct');
+		} else {
+			correct = false;
+			var id = '#' + chosenStructure + '.svg';
+			console.log($('#' + chosenStructure + 'Svg')[0]);
+			$('#structures img').each(function(){
+				$(this).removeClass('wrong');
+			});
+			$('#structures img').each(function(){
+				$(this).removeClass('correct');
+			});
+			$($('#' + chosenStructure + 'Svg')[0]).addClass('wrong');
+			//$(id).css({'border':'2px solid red'});
+			console.log(chosenStructure + '!=' + aminos[nums[counter-1]].name);
+		}
 		$(current).find('input').each(function(){
 			if($(this).hasClass('short')){
 				if($(this).val().toLowerCase() == aminos[nums[counter-1]].short){
@@ -205,6 +256,15 @@ function main() {
 			setTimeout(function(){
 				$('#forms').css({
 					'margin-left': '-' + counter*200 + 'px'
+				});
+				$('#structures img').each(function(){
+					$(this).removeClass('correct');
+				});
+				$('#structures img').each(function(){
+					$(this).removeClass('wrong');
+				});
+				$('#structures img').each(function(){
+					$(this).removeClass('chosen');
 				});
 				if(counter < aminos.length - 1){
 					counter += 1;
